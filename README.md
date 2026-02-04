@@ -47,3 +47,44 @@ A full-stack Community Management Web Application built to manage community prof
 
 ## 📁 Project Structure
 
+backend/
+├── controllers/
+├── models/
+├── routes/
+├── middleware/
+├── config/
+└── server.js
+
+frontend/
+├── components/
+├── pages/
+├── services/
+└── App.js
+
+
+---
+
+## 🔒 Role-Based Access Logic
+
+| Role  | Permissions |
+|------|-------------|
+| Admin | Full CRUD access |
+| User  | Read-only access |
+
+---
+
+## 📡 API Endpoints (Sample)
+
+| Method | Endpoint | Access |
+|------|---------|--------|
+| POST | /api/auth/register | Public |
+| POST | /api/auth/login | Public |
+| GET | /api/community | User/Admin |
+| POST | /api/community | Admin |
+| PUT | /api/community/:id | Admin |
+| DELETE | /api/community/:id | Admin |
+
+---
+
+
+
