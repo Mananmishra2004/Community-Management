@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Gallery</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-zinc-950 text-white p-10">
+    <div class="max-w-7xl mx-auto">
+        <div class="flex justify-between items-center mb-12">
+            <h1 class="text-4xl font-black tracking-tighter">Community Members</h1>
+            <div class="space-x-4">
+                <% if(isAdmin) { %>
+                    <a href="/admin" class="bg-zinc-800 border border-zinc-700 px-6 py-2 rounded-full font-bold">Admin Panel</a>
+                <% } else { %>
+                    <a href="/login" class="bg-blue-600 px-6 py-2 rounded-full font-bold">Admin Login</a>
+                <% } %>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <% users.forEach(user => { %>
+                <div class="bg-zinc-900 p-4 rounded-3xl border border-zinc-800 hover:border-zinc-700 transition-all">
+                    <img src="<%= user.image %>" class="w-full h-56 rounded-2xl object-cover mb-4" alt="">
+                    <h3 class="text-xl font-bold tracking-tight"><%= user.name %></h3>
+                    <p class="text-zinc-500 text-sm mb-4"><%= user.email %></p>
+                    <div class="flex gap-4">
+                        <% if(isAdmin) { %>
+                            <a href="/edit/<%= user._id %>" class="text-blue-400 text-sm font-bold">Edit Details</a>
+                            <a href="/delete/<%= user._id %>" class="text-red-500 text-sm font-bold">Delete</a>
+                        <% } else { %>
+                            <span class="text-zinc-600 text-xs italic">Read Only Mode</span>
+                        <% } %>
+                    </div>
+                </div>
+            <% }) %>
+        </div>
+    </div>
+</body>
+</html>
